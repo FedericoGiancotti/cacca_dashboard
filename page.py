@@ -20,7 +20,7 @@ st.set_page_config(page_title="Cacca Dashboard",
                    menu_items=None)
 
 st.title('💩 Cacca Dashboard')
-st.write('Dashboard per analizzare i dati di quanto il grupo Kafèèè caga al giorno')
+st.write('Dashboard per analizzare i dati di quanto il gruppo Kafèèè caga al giorno')
 
 file = st.file_uploader('Upload your chat file', type='txt')
 
