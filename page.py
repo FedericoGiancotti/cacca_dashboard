@@ -26,21 +26,21 @@ file = st.file_uploader('Upload your chat file', type='txt')
 
 if file is not None:
     df = load_data(file)
-    
+    daily_counts = df.groupby(['day', 'name']).size().reset_index(name='element_count')
+    weekly_counts = df.groupby(['week', 'name']).size().reset_index(name='element_count')
+    monthly_counts = df.groupby(['month', 'name']).size().reset_index(name='element_count')  
+    records(df, daily_counts, weekly_counts, monthly_counts)
+    total_cacca_counter(df)
     total_leaderboard(df)
     weekly_leaderboard(df)
     monthly_leaderboard(df)
-    total_cacca_counter(df)
     daily_bar_chart(df)
     cumulative_line_chart(df)
     distribution_pie_chart(df)
     hourly_distribution_bar_chart(df)
-    streaks(df)
-    
-    weekly_counts = df.groupby(['week', 'name']).size().reset_index(name='element_count')
-    monthly_counts = df.groupby(['month', 'name']).size().reset_index(name='element_count')
-    records(df, weekly_counts, monthly_counts)
-    
+    streaks(df)    
     group_streak(df)
+    st.header('Tabella dei dati')
+    st.write(df)
 else:
     st.warning('Please upload a chat file to continue.')

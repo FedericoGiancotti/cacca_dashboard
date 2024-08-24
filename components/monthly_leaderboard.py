@@ -1,8 +1,7 @@
 import streamlit as st
 
 def monthly_leaderboard(df):
-    st.header('Leaderboard cagate mensili')
-    df['month'] = df['timestamp'].dt.month_name()
+    st.header('Leaderboard mensile')
     monthly_counts = df.groupby(['month', 'name']).size().reset_index(name='element_count')
     selected_month = st.selectbox('Select Month:', sorted(monthly_counts['month'].unique()))
     filtered_data = monthly_counts[monthly_counts['month'] == selected_month]

@@ -2,7 +2,7 @@ import streamlit as st
 import pandas as pd 
 
 def group_streak(df):
-    st.header('Streak giorni in cui tutti abbiamo cagato')
+    st.header('Giorni consecutivi in cui tutti abbiamo cagato')
     df['day'] = df['timestamp'].dt.date
     df = df[['name', 'day']].drop_duplicates()
     df['day'] = pd.to_datetime(df['day'])

@@ -2,8 +2,7 @@ import streamlit as st
 import pandas as pd
 
 def streaks(df):
-    st.header('Streak corrente giorni con cagate per persona')
-    df['day'] = df['timestamp'].dt.date
+    st.header('Giorni consecutivi di cagate')
     df = df[['name', 'day']].drop_duplicates()
     df['day'] = pd.to_datetime(df['day'])
     df['day_diff'] = df.groupby('name')['day'].diff().dt.days.fillna(1)
